@@ -1,1 +1,43 @@
-<p>questions works!</p>
+<article fxLayout="column" fxLayoutAlign="center center">
+
+  <div fxLayoutGap="1rem">
+    <p><strong>Ask a new Question</strong></p>
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput type="text"
+             name="title"
+             [(ngModel)]="newTitle"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput type="text"
+             name="description"
+             [(ngModel)]="newDescription"/>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="addQuestion()">Ask</button>
+  </div>
+
+  <div class="questions">
+    <h1>Questions</h1>
+    <mat-card *ngFor="let q of questions" class="question">
+      <mat-card-title>{{q.title}}</mat-card-title>
+      <mat-card-content>
+        <p>{{q.description}}</p>
+      </mat-card-content>
+      <mat-card-footer fxLayoutAlign="end">
+        <button mat-button (click)="upVote(q)">
+          <mat-icon>thumb_up</mat-icon>
+          {{q.upVotes}}
+        </button>
+        <button mat-button (click)="downVote(q)">
+          <mat-icon>thumb_down</mat-icon>
+          {{q.downVotes}}
+        </button>
+      </mat-card-footer>
+    </mat-card>
+    <div *ngIf="!questions.length">
+      No one asked any questions yet
+    </div>
+  </div>
+
+</article>

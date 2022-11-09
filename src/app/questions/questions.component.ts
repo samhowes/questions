@@ -20,6 +20,8 @@ export class Question {
 export class QuestionsComponent implements OnInit {
 
   public questions: Array<Question> = []
+  public newDescription = ''
+  public newTitle = ''
 
   constructor(
     private snackBar: MatSnackBar
@@ -42,4 +44,20 @@ export class QuestionsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  upVote(q: Question) {
+    q.upVotes++
+    this.save()
+  }
+
+  downVote(q: Question) {
+    q.downVotes++
+    this.save()
+  }
+
+  addQuestion() {
+    this.questions.push(new Question(this.newTitle, this.newDescription))
+    this.save()
+    this.newTitle = ''
+    this.newDescription = ''
+  }
 }
