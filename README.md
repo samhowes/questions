@@ -47,6 +47,13 @@ build is configured in [angular.json](./angular.json).
 
 The output of `ng build` is copied to the `[dist/questions](./dist/questions)` folder.
 
+### Contents
+1. Javascript Bundles: each bundle is named with the hash of the bundle to guarantee the user's browser will not execute cached old versions of code. 
+   1. `main.<hash>.js`: the main application code
+   2. `polyfills.<hash>.js`: the main application code
+2. index.html: `src/index.html` with automatically substituted javascript bundles 
+3. styles.<hash>.css: manual, global styles that apply to the entire application 
+
 # Running
 
 The Angular CLI will serve this web application by running `ng serve`.
