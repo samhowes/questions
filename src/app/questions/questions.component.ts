@@ -34,6 +34,7 @@ export class QuestionsComponent implements OnInit {
     } catch (err) {
       this.snackBar.open(err as string)
     }
+    console.log('loaded demo')
   }
 
   public save() {
